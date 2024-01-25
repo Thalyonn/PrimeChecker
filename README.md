@@ -1,1 +1,3 @@
 # PrimeChecker
+
+Run main.cpp
