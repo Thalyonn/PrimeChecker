@@ -21,7 +21,7 @@ double run_experiment(int num_threads, int limit);
 int main() {
   std::vector<double> runtime_tracker;
   int custom_limit = 1000000;
-  int iter_cnt = 10;
+  int iter_cnt = 6;
   // Experiment with different thread counts
   std::vector<int> thread_counts = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
   for (int threads : thread_counts) {
@@ -29,9 +29,9 @@ int main() {
     for (int i = 0; i < iter_cnt; i++) {
       double time = run_experiment(threads, custom_limit);
       avg_runtime += time;
-      avg_runtime /= iter_cnt; // Calculate average runtime
-      std::cout  << " | Test " << i << " | Speed: " << time << " microseconds\n";
+      std::cout  << " | Test " << (i+1) << " | Speed: " << time << " microseconds\n";
     }
+    avg_runtime /= iter_cnt; // Calculate average runtime
     runtime_tracker.push_back(avg_runtime);
     std::cout << "No. of Threads: " << threads << " | Avg. Runtime: " << avg_runtime << " microseconds\n\n" << std::endl;
   }
